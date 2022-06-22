@@ -15,10 +15,16 @@ namespace MovieWatchlist.ViewModels
         public int ReleaseYear => _motionPicture.ReleaseYear;
         public string? Director => _motionPicture.Director;
         public string Rating => _motionPicture.Rating;
+        public int EpisodeCount { get; } = 1;
 
         public MotionPictureViewModel(MotionPicture motionPicture)
         {
             _motionPicture = motionPicture;
+
+            if(motionPicture is TVSeries)
+            {
+                EpisodeCount = ((TVSeries)_motionPicture).EpisodeCount;
+            }
         }
     }
 }
