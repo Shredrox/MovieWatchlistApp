@@ -12,7 +12,7 @@ namespace MovieWatchlist.ViewModels
 
         public MainViewModel()
         {
-            CurrentViewModel = new WatchlistViewModel();
+            CurrentViewModel = new AddToWatchlistViewModel();
         }
     }
 }

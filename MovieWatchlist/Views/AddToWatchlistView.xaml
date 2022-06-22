@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="MovieWatchlist.Views.AddToWatchlistView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:local="clr-namespace:MovieWatchlist.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="600">
+    
+    <Grid Width="400">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+            Text="Add new Movie/TV Series to Watchlist"
+            Grid.Row="0"
+            Foreground="White"
+            HorizontalAlignment="Center"
+            FontSize="20"
+            Margin="15"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock 
+                Text="Name" 
+                Grid.Row="0" 
+                FontSize="15"
+                Foreground="White"/>
+            
+            <TextBox 
+                x:Name="NameBox" 
+                Grid.Row="1"  
+                Margin="0 0 0 10"
+                Foreground="White" 
+                CaretBrush="#FFFFCC00" 
+                SelectionBrush="#FFFFCC00" 
+                SelectionTextBrush="#FFFFCC00" 
+                BorderBrush="#FFFFCC00"/>
+            
+            <TextBlock 
+                Text="Release Year" 
+                Grid.Row="2"
+                FontSize="15"
+                Foreground="White"/>
+            
+            <TextBox 
+                x:Name="ReleaseYearBox" 
+                Grid.Row="3" 
+                Margin="0 0 0 10"
+                Foreground="White" 
+                CaretBrush="#FFFFCC00" 
+                SelectionBrush="#FFFFCC00" 
+                SelectionTextBrush="#FFFFCC00" 
+                BorderBrush="#FFFFCC00"/>
+            
+            <TextBlock 
+                Text="Director" 
+                Grid.Row="4" 
+                FontSize="15"
+                Foreground="White"/>
+            
+            <TextBox 
+                x:Name="DirectorBox" 
+                Grid.Row="5" 
+                Margin="0 0 0 10" 
+                Foreground="White" 
+                CaretBrush="#FFFFCC00" 
+                SelectionBrush="#FFFFCC00" 
+                SelectionTextBrush="#FFFFCC00" 
+                BorderBrush="#FFFFCC00"/>
+
+            <TextBlock 
+                Text="Rating" 
+                Grid.Row="6" 
+                FontSize="15"
+                Foreground="White"/>
+
+            <TextBox 
+                x:Name="RatingBox" 
+                Grid.Row="7" 
+                Margin="0 0 0 10" 
+                Foreground="White" 
+                CaretBrush="#FFFFCC00" 
+                SelectionBrush="#FFFFCC00" 
+                SelectionTextBrush="#FFFFCC00" 
+                BorderBrush="#FFFFCC00"/>
+
+            <TextBlock 
+                Text="Episodes" 
+                Grid.Row="8" 
+                FontSize="15"
+                Foreground="White"/>
+
+            <TextBox 
+                x:Name="EpisodesBox" 
+                Grid.Row="9" 
+                Margin="0 0 0 10" 
+                Foreground="White" 
+                CaretBrush="#FFFFCC00" 
+                SelectionBrush="#FFFFCC00" 
+                SelectionTextBrush="#FFFFCC00" 
+                BorderBrush="#FFFFCC00"/>
+
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Button
+                Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
+                Content="Cancel"
+                Margin="105 20 20 20"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+
+            <Button
+                Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
+                Content="Confirm"
+                Margin="10 20 20 20"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

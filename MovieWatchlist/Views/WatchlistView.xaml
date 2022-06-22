@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MovieWatchlist.Views"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:system="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="600"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -29,114 +30,64 @@
             Foreground="White"
             Margin="0 0 0 10"/>
 
-        <materialDesign:DialogHost Grid.Row="1" DialogTheme="Dark">
-            <materialDesign:DialogHost.DialogContent>
-                <StackPanel Margin="16">
-                    <TextBlock Text="Add a new Movie or TV Series."/>
+        <ListView 
+            x:Name="WatchlistBox" 
+            Grid.Row="1" 
+            HorizontalAlignment="Center"
+            ItemsSource="{Binding WatchList}">
 
-                    <TextBox
-                        Margin="0 8 0 0"
-                        HorizontalAlignment="Stretch"
-                        x:Name="FruitTextBox"/>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="FontSize" Value="15"/>
+                </Style>
+            </ListView.ItemContainerStyle>
 
-                    <StackPanel
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Right">
-                        <Button
-                            Style="{StaticResource MaterialDesignFlatButton}"
-                            IsDefault="True"
-                            Margin="0 8 8 0"
-                            Content="ACCEPT"
-                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
-                        </Button>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}" HorizontalAlignment="Left" Foreground="White"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 
-                        <Button
-                            Style="{StaticResource MaterialDesignFlatButton}"
-                            IsCancel="True"
-                            Margin="0 8 8 0"
-                            Content="CANCEL"
-                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
-                        </Button>
-                    </StackPanel>
-                </StackPanel>
-            </materialDesign:DialogHost.DialogContent>
+                    <GridViewColumn Header="Release Year" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ReleaseYear}" Padding="0 0 20 0" Foreground="White"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="80"/>
-                </Grid.RowDefinitions>
+                    <GridViewColumn Header="Director" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Director}" Padding="0 0 20 0" Foreground="White"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 
-                <ListView 
-                    x:Name="WatchlistBox" 
-                    Grid.Row="0" 
-                    HorizontalAlignment="Center"
-                    ItemsSource="{Binding WatchList}">
+                    <GridViewColumn Header="Episodes" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding EpisodeCount}" Padding="0 0 20 0" Foreground="White"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                            <Setter Property="Height" Value="30"/>
-                            <Setter Property="Margin" Value="5"/>
-                            <Setter Property="FontSize" Value="15"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Name" Width="100">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Left" Foreground="White"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                            <GridViewColumn Header="Release Year" Width="100">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ReleaseYear}" Padding="0 0 20 0" Foreground="White"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                            <GridViewColumn Header="Director" Width="100">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Director}" Padding="0 0 20 0" Foreground="White"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                            <GridViewColumn Header="Episodes" Width="100">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding EpisodeCount}" Padding="0 0 20 0" Foreground="White"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                            <GridViewColumn Header="Rating" Width="100">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Rating}" Foreground="White"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-
-                <Button
-                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
-                    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center" 
-                    Grid.Row="1"
-                    Margin="0 0 28 -20"
-                    Content="{materialDesign:PackIcon Kind=Plus, Size=22}"/>
-
-            </Grid>
-        </materialDesign:DialogHost>
+                    <GridViewColumn Header="Rating" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Rating}" Foreground="White"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

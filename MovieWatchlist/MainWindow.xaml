@@ -21,6 +21,6 @@
                 <GradientStop Color="#FF2D1F1F" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <views:WatchlistView Margin="10" DataContext="{Binding CurrentViewModel}"/>
+        <views:AddToWatchlistView Margin="10" DataContext="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

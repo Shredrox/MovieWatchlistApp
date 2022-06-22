@@ -1,5 +1,4 @@
-﻿using MovieWatchlist.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +16,11 @@ using System.Windows.Shapes;
 namespace MovieWatchlist.Views
 {
     /// <summary>
-    /// Interaction logic for WatchlistView.xaml
+    /// Interaction logic for AddToWatchlistView.xaml
     /// </summary>
-    public partial class WatchlistView : UserControl
+    public partial class AddToWatchlistView : UserControl
     {
-        public WatchlistView()
+        public AddToWatchlistView()
         {
             InitializeComponent();
         }
