@@ -51,7 +51,8 @@
                 CaretBrush="#FFFFCC00" 
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
-                BorderBrush="#FFFFCC00"/>
+                BorderBrush="#FFFFCC00"
+                Text="{Binding Name}"/>
             
             <TextBlock 
                 Text="Release Year" 
@@ -67,7 +68,8 @@
                 CaretBrush="#FFFFCC00" 
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
-                BorderBrush="#FFFFCC00"/>
+                BorderBrush="#FFFFCC00"
+                Text="{Binding ReleaseYear}"/>
             
             <TextBlock 
                 Text="Director" 
@@ -83,7 +85,8 @@
                 CaretBrush="#FFFFCC00" 
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
-                BorderBrush="#FFFFCC00"/>
+                BorderBrush="#FFFFCC00"
+                Text="{Binding Director}"/>
 
             <TextBlock 
                 Text="Rating" 
@@ -99,7 +102,8 @@
                 CaretBrush="#FFFFCC00" 
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
-                BorderBrush="#FFFFCC00"/>
+                BorderBrush="#FFFFCC00"
+                Text="{Binding Rating}"/>
 
             <TextBlock 
                 Text="Episodes" 
@@ -115,7 +119,8 @@
                 CaretBrush="#FFFFCC00" 
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
-                BorderBrush="#FFFFCC00"/>
+                BorderBrush="#FFFFCC00"
+                Text="{Binding EpisodeCount}"/>
 
         </Grid>
 
@@ -124,13 +129,15 @@
                 Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
                 Content="Cancel"
                 Margin="105 20 20 20"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
+                Command="{Binding CancelCommand}"/>
 
             <Button
                 Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
                 Content="Confirm"
                 Margin="10 20 20 20"
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
+                Command="{Binding ConfirmCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>
