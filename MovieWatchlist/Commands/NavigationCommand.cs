@@ -1,4 +1,5 @@
-﻿using MovieWatchlist.Stores;
+﻿using MovieWatchlist.Services;
+using MovieWatchlist.Stores;
 using MovieWatchlist.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,18 +11,16 @@ namespace MovieWatchlist.Commands
 {
     public class NavigationCommand : CommandBase
     {
-        private readonly NavigationStore _navigationStore;
-        private readonly Func<ViewModelBase> _createViewModel;
+        private readonly NavigationService _navigationService;
 
-        public NavigationCommand(NavigationStore navigationStore, Func<ViewModelBase> createViewModel)
+        public NavigationCommand(NavigationService navigationService)
         {
-            _navigationStore = navigationStore;
-            _createViewModel = createViewModel; 
+            _navigationService = navigationService;
         }
 
         public override void Execute(object? parameter)
         {
-            _navigationStore.CurrentViewModel = _createViewModel();
+            _navigationService.Navigate();
         }
     }
 }

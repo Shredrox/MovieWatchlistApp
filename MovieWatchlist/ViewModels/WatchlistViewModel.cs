@@ -1,5 +1,6 @@
 ﻿using MovieWatchlist.Commands;
 using MovieWatchlist.Models;
+using MovieWatchlist.Services;
 using MovieWatchlist.Stores;
 using System;
 using System.Collections.Generic;
@@ -11,26 +12,31 @@ namespace MovieWatchlist.ViewModels
     public class WatchlistViewModel : ViewModelBase
     {
         private readonly ObservableCollection<MotionPictureViewModel> _watchlistCollection;
+        private readonly Watchlist _watchlist;
+
         public IEnumerable<MotionPictureViewModel> WatchList => _watchlistCollection;
 
         public ICommand EditPlaylistCommand { get; }
 
-        public WatchlistViewModel(NavigationStore navigationStore, Func<AddToWatchlistViewModel> createAddToWatchlistViewModel)
+        public WatchlistViewModel(Watchlist watchlist, NavigationService addToWatchlistNavigation)
         {
-            EditPlaylistCommand = new NavigationCommand(navigationStore, createAddToWatchlistViewModel);
-
             _watchlistCollection = new ObservableCollection<MotionPictureViewModel>();
+            _watchlist = watchlist;
 
-            _watchlistCollection.Add(new MotionPictureViewModel(new Movie("Movie 1", 2022, "Dir", 10)));
-            _watchlistCollection.Add(new MotionPictureViewModel(new Movie("Movie 2", 2022, "Dir2", 5)));
-            _watchlistCollection.Add(new MotionPictureViewModel(new Movie("Movie 3", 2022, "Dir3", 6)));
-            _watchlistCollection.Add(new MotionPictureViewModel(new TVSeries("Series 1", 2022, "Dir4", 10,69)));
-            _watchlistCollection.Add(new MotionPictureViewModel(new Movie("Movie 1", 2022, "Dir", 10)));
-            _watchlistCollection.Add(new MotionPictureViewModel(new Movie("Movie 2", 2022, "Dir2", 5)));
-            _watchlistCollection.Add(new MotionPictureViewModel(new Movie("Movie 3", 2022, "Dir3", 6)));
-            _watchlistCollection.Add(new MotionPictureViewModel(new TVSeries("Series 1", 2022, "Dir4", 10, 69)));
+            EditPlaylistCommand = new NavigationCommand(addToWatchlistNavigation);
 
-            
+            UpdateWatchlist();
+        }
+
+        private void UpdateWatchlist()
+        {
+            _watchlistCollection.Clear();
+
+            foreach(MotionPicture motionPicture in _watchlist.WatchList)
+            {
+                MotionPictureViewModel motionPictureViewModel = new MotionPictureViewModel(motionPicture);
+                _watchlistCollection.Add(motionPictureViewModel);
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MovieWatchlist.Commands;
 using MovieWatchlist.Models;
+using MovieWatchlist.Services;
 using MovieWatchlist.Stores;
 using System;
 using System.Collections.Generic;
@@ -85,10 +86,10 @@ namespace MovieWatchlist.ViewModels
         public ICommand ConfirmCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public AddToWatchlistViewModel(Watchlist watchlist, NavigationStore navigationStore, Func<WatchlistViewModel> createWatchlistViewModel)
+        public AddToWatchlistViewModel(Watchlist watchlist, NavigationService watchlistViewNavigation)
         {
-            ConfirmCommand = new AddToWatchlistCommand(this, watchlist);
-            CancelCommand = new NavigationCommand(navigationStore, createWatchlistViewModel);
+            ConfirmCommand = new AddToWatchlistCommand(this, watchlist, watchlistViewNavigation);
+            CancelCommand = new NavigationCommand(watchlistViewNavigation);
         }
     }
 }

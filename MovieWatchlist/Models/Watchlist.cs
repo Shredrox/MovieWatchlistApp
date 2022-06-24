@@ -10,6 +10,8 @@ namespace MovieWatchlist.Models
     {
         private List<MotionPicture> _watchList;
 
+        public List<MotionPicture> WatchList { get { return _watchList; } }
+
         public string? Name { get; }
         
         public Watchlist(string name)
@@ -27,5 +29,7 @@ namespace MovieWatchlist.Models
         {
             _watchList.Add(tvSeries);
         }
+
+
     }
 }
