@@ -27,15 +27,5 @@ namespace MovieWatchlist.Models
         {
             _watchList.Add(tvSeries);
         }
-
-        public void ClearWatctlist()
-        {
-            _watchList.Clear(); 
-        }
-
-        public int WatchlistSize()
-        {
-            return _watchList.Count;
-        }
     }
 }

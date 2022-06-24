@@ -1,4 +1,5 @@
 ﻿using MovieWatchlist.Commands;
+using MovieWatchlist.Models;
 using MovieWatchlist.Stores;
 using System;
 using System.Collections.Generic;
@@ -53,8 +54,8 @@ namespace MovieWatchlist.ViewModels
             }
         }
 
-        private string? _rating;
-        public string? Rating
+        private int _rating;
+        public int Rating
         {
             get
             {
@@ -84,9 +85,9 @@ namespace MovieWatchlist.ViewModels
         public ICommand ConfirmCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public AddToWatchlistViewModel(NavigationStore navigationStore, Func<WatchlistViewModel> createWatchlistViewModel)
+        public AddToWatchlistViewModel(Watchlist watchlist, NavigationStore navigationStore, Func<WatchlistViewModel> createWatchlistViewModel)
         {
-            ConfirmCommand = new AddToWatchlistCommand();
+            ConfirmCommand = new AddToWatchlistCommand(this, watchlist);
             CancelCommand = new NavigationCommand(navigationStore, createWatchlistViewModel);
         }
     }

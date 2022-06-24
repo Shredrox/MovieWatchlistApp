@@ -1,4 +1,5 @@
-﻿using MovieWatchlist.Stores;
+﻿using MovieWatchlist.Models;
+using MovieWatchlist.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace MovieWatchlist.ViewModels
 
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
-        public MainViewModel(NavigationStore navigationStore)
+        public MainViewModel(Watchlist watchlist, NavigationStore navigationStore)
         {
             _navigationStore = navigationStore;
 
