@@ -41,12 +41,14 @@ namespace MovieWatchlist
 
         private AddToWatchlistViewModel CreateAddToWatchlistViewModel()
         {
-            return new AddToWatchlistViewModel(_watchlist, new NavigationService(_navigationStore, CreateWatchlistViewModel));
+            return new AddToWatchlistViewModel(_watchlist, 
+                new NavigationService(_navigationStore, CreateWatchlistViewModel));
         }
 
         private WatchlistViewModel CreateWatchlistViewModel()
         {
-            return new WatchlistViewModel(_watchlist, new NavigationService(_navigationStore, CreateAddToWatchlistViewModel));
+            return new WatchlistViewModel(_watchlist, 
+                new NavigationService(_navigationStore, CreateAddToWatchlistViewModel));
         }
     }
 }

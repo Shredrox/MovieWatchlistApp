@@ -13,6 +13,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock 
@@ -23,7 +24,24 @@
             FontSize="20"
             Margin="15"/>
 
-        <Grid Grid.Row="1">
+        <ListBox
+            Style="{StaticResource MaterialDesignChoiceChipAccentOutlineListBox}"
+            Grid.Row="1"
+            HorizontalAlignment="Center">
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignChoiceChipPrimaryOutlineListBoxItem}">
+                    <Setter Property="Foreground" Value="#FFFFCC00"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            
+            <ListBoxItem
+                Content="Movie" />
+            <ListBoxItem
+                Content="TV Series" />
+        </ListBox>
+
+        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -124,7 +142,7 @@
 
         </Grid>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
             <Button
                 Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
                 Content="Cancel"
