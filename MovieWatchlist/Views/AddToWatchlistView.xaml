@@ -52,7 +52,7 @@
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
                 BorderBrush="#FFFFCC00"
-                Text="{Binding Name}"/>
+                Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
             
             <TextBlock 
                 Text="Release Year" 
@@ -69,7 +69,7 @@
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
                 BorderBrush="#FFFFCC00"
-                Text="{Binding ReleaseYear}"/>
+                Text="{Binding ReleaseYear, UpdateSourceTrigger=PropertyChanged}"/>
             
             <TextBlock 
                 Text="Director" 
@@ -86,7 +86,7 @@
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
                 BorderBrush="#FFFFCC00"
-                Text="{Binding Director}"/>
+                Text="{Binding Director, UpdateSourceTrigger=PropertyChanged}"/>
 
             <TextBlock 
                 Text="Rating" 
@@ -103,7 +103,7 @@
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
                 BorderBrush="#FFFFCC00"
-                Text="{Binding Rating}"/>
+                Text="{Binding Rating, UpdateSourceTrigger=PropertyChanged}"/>
 
             <TextBlock 
                 Text="Episodes" 
@@ -120,7 +120,7 @@
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
                 BorderBrush="#FFFFCC00"
-                Text="{Binding EpisodeCount}"/>
+                Text="{Binding EpisodeCount, UpdateSourceTrigger=PropertyChanged}"/>
 
         </Grid>
 

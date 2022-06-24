@@ -1,6 +1,10 @@
-﻿using MovieWatchlist.Models;
+﻿using MovieWatchlist.Commands;
+using MovieWatchlist.Models;
+using MovieWatchlist.Stores;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace MovieWatchlist.ViewModels
 {
@@ -9,78 +13,12 @@ namespace MovieWatchlist.ViewModels
         private readonly ObservableCollection<MotionPictureViewModel> _watchlistCollection;
         public IEnumerable<MotionPictureViewModel> WatchList => _watchlistCollection;
 
-        private string? _name;
-        public string? Name 
-        {
-            get 
-            { 
-                return _name;
-            }
-            set
-            {
-                _name = value;
-                OnPropertyChanged(nameof(Name));
-            }
-        }
+        public ICommand EditPlaylistCommand { get; }
 
-        private int _releaseYear;
-        public int ReleaseYear
+        public WatchlistViewModel(NavigationStore navigationStore, Func<AddToWatchlistViewModel> createAddToWatchlistViewModel)
         {
-            get
-            {
-                return _releaseYear;
-            }
-            set
-            {
-                _releaseYear = value;
-                OnPropertyChanged(nameof(ReleaseYear));
-            }
-        }
+            EditPlaylistCommand = new NavigationCommand(navigationStore, createAddToWatchlistViewModel);
 
-        private string? _director;
-        public string? Director
-        {
-            get
-            {
-                return _director;
-            }
-            set
-            {
-                _director = value;
-                OnPropertyChanged(nameof(Director));
-            }
-        }
-
-        private string? _rating;
-        public string? Rating
-        {
-            get
-            {
-                return _rating;
-            }
-            set
-            {
-                _rating = value;
-                OnPropertyChanged(nameof(Rating));
-            }
-        }
-
-        private int _episodeCount;
-        public int EpisodeCount
-        {
-            get
-            {
-                return _episodeCount;
-            }
-            set
-            {
-                _episodeCount = value;
-                OnPropertyChanged(nameof(EpisodeCount));
-            }
-        }
-
-        public WatchlistViewModel()
-        {
             _watchlistCollection = new ObservableCollection<MotionPictureViewModel>();
 
             _watchlistCollection.Add(new MotionPictureViewModel(new Movie("Movie 1", 2022, "Dir", 10)));

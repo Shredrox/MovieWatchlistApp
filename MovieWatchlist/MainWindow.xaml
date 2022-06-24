@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MovieWatchlist" xmlns:views="clr-namespace:MovieWatchlist.Views"
+        xmlns:local="clr-namespace:MovieWatchlist" 
+        xmlns:views="clr-namespace:MovieWatchlist.Views"
+        xmlns:vms="clr-namespace:MovieWatchlist.ViewModels"
         mc:Ignorable="d"
         Title="Movie Watchlist" Height="800" Width="620"
         WindowStartupLocation="CenterScreen">
@@ -15,12 +17,22 @@
     </Window.Background>
     
     <Grid Margin="30">
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:WatchlistViewModel}">
+                <views:WatchlistView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:AddToWatchlistViewModel}">
+                <views:AddToWatchlistView/>
+            </DataTemplate>
+        </Grid.Resources>
+        
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF342D3A"/>
                 <GradientStop Color="#FF2D1F1F" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <views:AddToWatchlistView Margin="10" DataContext="{Binding CurrentViewModel}"/>
+
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

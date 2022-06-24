@@ -30,9 +30,21 @@
             Foreground="White"
             Margin="0 0 0 10"/>
 
+        <Button
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            materialDesign:ButtonAssist.CornerRadius="25 25 0 0"
+            Grid.Row="1"
+            Width="150"
+            Content="EDIT WATCHLIST"
+            Margin="5 0 0 20"
+            HorizontalAlignment="Center"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+            Command="{Binding EditPlaylistCommand}">
+        </Button>
+
         <ListView 
             x:Name="WatchlistBox" 
-            Grid.Row="1" 
+            Grid.Row="2" 
             HorizontalAlignment="Center"
             ItemsSource="{Binding WatchList}">
 

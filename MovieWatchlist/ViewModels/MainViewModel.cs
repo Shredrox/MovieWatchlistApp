@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieWatchlist.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,20 @@ namespace MovieWatchlist.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public ViewModelBase CurrentViewModel { get; }
+        private readonly NavigationStore _navigationStore;
 
-        public MainViewModel()
+        public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
+
+        public MainViewModel(NavigationStore navigationStore)
         {
-            CurrentViewModel = new AddToWatchlistViewModel();
+            _navigationStore = navigationStore;
+
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+        }
+
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }

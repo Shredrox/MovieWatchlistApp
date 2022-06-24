@@ -1,4 +1,5 @@
-﻿using MovieWatchlist.ViewModels;
+﻿using MovieWatchlist.Stores;
+using MovieWatchlist.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,15 +15,34 @@ namespace MovieWatchlist
     /// </summary>
     public partial class App : Application
     {
+        private readonly NavigationStore _navigationStore;
+
+        public App()
+        {
+            _navigationStore = new NavigationStore();
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
+            _navigationStore.CurrentViewModel = CreateWatchlistViewModel();
+
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(_navigationStore)
             };
             MainWindow.Show();
 
             base.OnStartup(e);
+        }
+
+        private AddToWatchlistViewModel CreateAddToWatchlistViewModel()
+        {
+            return new AddToWatchlistViewModel(_navigationStore, CreateWatchlistViewModel);
+        }
+
+        private WatchlistViewModel CreateWatchlistViewModel()
+        {
+            return new WatchlistViewModel(_navigationStore, CreateAddToWatchlistViewModel);
         }
     }
 }
