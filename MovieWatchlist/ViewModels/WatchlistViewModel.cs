@@ -26,6 +26,8 @@ namespace MovieWatchlist.ViewModels
             EditPlaylistCommand = new NavigationCommand(addToWatchlistNavigation);
 
             UpdateWatchlist();
+
+            _watchlistCollection.Add(new MotionPictureViewModel(new Movie("Fight Club", 1999, "David Fincher", 10)));
         }
 
         private void UpdateWatchlist()

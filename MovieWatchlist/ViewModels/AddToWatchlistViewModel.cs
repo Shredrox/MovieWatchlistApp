@@ -71,8 +71,8 @@ namespace MovieWatchlist.ViewModels
             }
         }
 
-        private int _episodeCount;
-        public int EpisodeCount
+        private string? _episodeCount;
+        public string? EpisodeCount
         {
             get
             {
@@ -85,6 +85,9 @@ namespace MovieWatchlist.ViewModels
             }
         }
 
+        public ICommand ConfirmCommand { get; }
+        public ICommand CancelCommand { get; }
+
         private Visibility _isVisible;
         public Visibility IsVisible
         {
@@ -95,9 +98,6 @@ namespace MovieWatchlist.ViewModels
                 OnPropertyChanged(nameof(IsVisible));
             }
         }
-
-        public ICommand ConfirmCommand { get; }
-        public ICommand CancelCommand { get; }
 
         public ListBoxItem SelectedItem
         {

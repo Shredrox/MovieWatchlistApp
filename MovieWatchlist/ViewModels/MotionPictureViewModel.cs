@@ -14,8 +14,8 @@ namespace MovieWatchlist.ViewModels
         public string? Title => _motionPicture.Title;
         public int ReleaseYear => _motionPicture.ReleaseYear;
         public string? Director => _motionPicture.Director;
-        public string Rating => _motionPicture.Rating;
-        public int EpisodeCount { get; } = 1;
+        public string? Rating => _motionPicture.Rating;
+        public string? EpisodeCount { get; } = "-";
 
         public MotionPictureViewModel(MotionPicture motionPicture)
         {

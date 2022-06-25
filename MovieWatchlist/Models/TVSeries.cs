@@ -8,9 +8,9 @@ namespace MovieWatchlist.Models
 {
     public class TVSeries : MotionPicture
     {
-        public int EpisodeCount { get; }
+        public string? EpisodeCount { get; }
 
-        public TVSeries(string? title, int year, string? director, int rating , int epCount)
+        public TVSeries(string? title, int year, string? director, int rating , string? epCount)
             : base(title, year, director, rating)
         {
             EpisodeCount = epCount;

@@ -18,6 +18,7 @@
 
             <Style x:Key="{x:Type GridViewColumnHeader}" TargetType="GridViewColumnHeader">
                 <Setter Property="HorizontalContentAlignment" Value="Left" />
+                <Setter Property="Padding" Value="5 0 0 0"/>
                 <Setter Property="VerticalContentAlignment" Value="Center" />
                 <Setter Property="TextBlock.FontWeight" Value="Medium" />
                 <Setter Property="OverridesDefaultStyle" Value="True" />

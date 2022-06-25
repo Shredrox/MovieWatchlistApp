@@ -154,14 +154,14 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="3">
             <Button
-                Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
+                Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}"
                 Content="Cancel"
                 Margin="105 20 20 20"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
                 Command="{Binding CancelCommand}"/>
 
             <Button
-                Style="{StaticResource MaterialDesignOutlinedSecondaryLightButton}"
+                Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}"
                 Content="Confirm"
                 Margin="10 20 20 20"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
