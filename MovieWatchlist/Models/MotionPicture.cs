@@ -11,7 +11,7 @@ namespace MovieWatchlist.Models
         public string? Title { get; }
         public int ReleaseYear { get; }
         public string? Director { get; }
-        public string Rating { get; }
+        public string? Rating { get; }
 
         public MotionPicture(string? title, int year, string? director, int rating)
         {

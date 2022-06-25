@@ -14,6 +14,7 @@ namespace MovieWatchlist.Commands
         private readonly AddToWatchlistViewModel _addToWatchlistViewModel;
         private readonly Watchlist _watchlist;
         private readonly NavigationService _watchlistViewNavigation;
+        private string? _motionPictureType;
 
         public AddToWatchlistCommand(AddToWatchlistViewModel addToWatchlistViewModel, 
             Watchlist watchlist, NavigationService watchlistViewNavigation)
@@ -23,15 +24,35 @@ namespace MovieWatchlist.Commands
             _watchlistViewNavigation = watchlistViewNavigation;
         }
 
+        public void SetMotionPictureType(string? mpType)
+        {
+            _motionPictureType = mpType;
+        }
+
         public override void Execute(object? parameter)
         {
-            Movie movie = new Movie(
-                _addToWatchlistViewModel.Name,
-                _addToWatchlistViewModel.ReleaseYear,
-                _addToWatchlistViewModel.Director,
-                _addToWatchlistViewModel.Rating);
+            if (_motionPictureType == "Movie")
+            {
+                Movie movie = new Movie(
+                           _addToWatchlistViewModel.Name,
+                           _addToWatchlistViewModel.ReleaseYear,
+                           _addToWatchlistViewModel.Director,
+                           _addToWatchlistViewModel.Rating);
 
-            _watchlist.AddMovie(movie);
+                _watchlist.AddMovie(movie);
+            }
+            else if (_motionPictureType == "TV Series") 
+            {
+                TVSeries tvSeries = new TVSeries(
+                            _addToWatchlistViewModel.Name,
+                            _addToWatchlistViewModel.ReleaseYear,
+                            _addToWatchlistViewModel.Director,
+                            _addToWatchlistViewModel.Rating,
+                            _addToWatchlistViewModel.EpisodeCount);
+
+                _watchlist.AddTVSeries(tvSeries);
+            }
+
             _watchlistViewNavigation.Navigate();
         }
     }

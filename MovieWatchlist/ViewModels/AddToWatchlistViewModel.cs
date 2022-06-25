@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace MovieWatchlist.ViewModels
@@ -80,6 +81,15 @@ namespace MovieWatchlist.ViewModels
             {
                 _episodeCount = value;
                 OnPropertyChanged(nameof(EpisodeCount));
+            }
+        }
+
+        public ListBoxItem SelectedItem
+        {
+            set
+            {
+                ((AddToWatchlistCommand)ConfirmCommand).SetMotionPictureType(value.Content.ToString());
+                OnPropertyChanged(nameof(SelectedItem));
             }
         }
 

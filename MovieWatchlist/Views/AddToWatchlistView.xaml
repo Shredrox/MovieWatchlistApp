@@ -24,23 +24,31 @@
             FontSize="20"
             Margin="15"/>
 
-        <ListBox
-            Style="{StaticResource MaterialDesignChoiceChipAccentOutlineListBox}"
-            Grid.Row="1"
-            HorizontalAlignment="Center">
-
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignChoiceChipPrimaryOutlineListBoxItem}">
-                    <Setter Property="Foreground" Value="#FFFFCC00"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
+        <materialDesign:Card 
+            Grid.Row="1" 
+            Background="#FFFFCC00" 
+            UniformCornerRadius="20"
+            Width="200">
             
-            <ListBoxItem
-                Content="Movie" />
-            <ListBoxItem
-                Content="TV Series" />
-        </ListBox>
+            <ListBox
+                Style="{StaticResource MaterialDesignChoiceChipAccentOutlineListBox}"
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
 
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignFilterChipPrimaryOutlineListBoxItem}">
+                        <Setter Property="Foreground" Value="#FFFFCC00"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
+                <ListBoxItem
+                    Content="Movie" />
+                <ListBoxItem
+                    Content="TV Series" />
+            </ListBox>
+        </materialDesign:Card>
+        
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>

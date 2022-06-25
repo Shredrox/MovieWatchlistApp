@@ -10,7 +10,7 @@ namespace MovieWatchlist.Models
     {
         public int EpisodeCount { get; }
 
-        public TVSeries(string title, int year, string director, int rating , int epCount)
+        public TVSeries(string? title, int year, string? director, int rating , int epCount)
             : base(title, year, director, rating)
         {
             EpisodeCount = epCount;
