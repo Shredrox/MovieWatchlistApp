@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace MovieWatchlist.ViewModels
 {
@@ -16,6 +17,7 @@ namespace MovieWatchlist.ViewModels
         public string? Director => _motionPicture.Director;
         public string? Rating => _motionPicture.Rating;
         public string? EpisodeCount { get; } = "-";
+        public ImageSource Image => _motionPicture.Image;
 
         public MotionPictureViewModel(MotionPicture motionPicture)
         {

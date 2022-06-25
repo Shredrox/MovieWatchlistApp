@@ -60,15 +60,15 @@
 
             <ListView.View>
                 <GridView>
-                    <!--<GridViewColumn Header="Image" Width="100">
+                    <GridViewColumn Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="C:\Users\User\Desktop\Stuff\fightClub.jpg"/>
+                                <Image Source="{Binding Image}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>-->
+                    </GridViewColumn>
 
-                    <GridViewColumn Header="Name" Width="100">
+                    <GridViewColumn Header="Name" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Title}" Margin="5" HorizontalAlignment="Center" Foreground="White"/>
@@ -84,7 +84,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Director" Width="110">
+                    <GridViewColumn Header="Director">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Director}" HorizontalAlignment="Center" Foreground="White"/>

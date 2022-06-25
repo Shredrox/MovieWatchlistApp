@@ -8,8 +8,9 @@
         xmlns:views="clr-namespace:MovieWatchlist.Views"
         xmlns:vms="clr-namespace:MovieWatchlist.ViewModels"
         mc:Ignorable="d"
-        Title="Movie Watchlist" Height="800" Width="650"
-        WindowStartupLocation="CenterScreen">
+        Title="Movie Watchlist" Height="800" Width="680"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

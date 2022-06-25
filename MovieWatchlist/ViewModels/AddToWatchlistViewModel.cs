@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace MovieWatchlist.ViewModels
 {
@@ -87,6 +88,7 @@ namespace MovieWatchlist.ViewModels
 
         public ICommand ConfirmCommand { get; }
         public ICommand CancelCommand { get; }
+        public ICommand AddImageCommand { get; }
 
         private Visibility _isVisible;
         public Visibility IsVisible
@@ -99,13 +101,15 @@ namespace MovieWatchlist.ViewModels
             }
         }
 
+        public string? Type { get; set; }   
         public ListBoxItem SelectedItem
         {
             set
             {
                 if(value != null)
                 {
-                    ((AddToWatchlistCommand)ConfirmCommand).SetMotionPictureType(value.Content.ToString());
+                    Type = value.Content.ToString();
+
                     if (value.Content.ToString() == "Movie")
                     {
                         IsVisible = Visibility.Hidden;
@@ -123,6 +127,7 @@ namespace MovieWatchlist.ViewModels
         {
             ConfirmCommand = new AddToWatchlistCommand(this, watchlist, watchlistViewNavigation);
             CancelCommand = new NavigationCommand(watchlistViewNavigation);
+            AddImageCommand = new AddImageCommand();
         }
     }
 }

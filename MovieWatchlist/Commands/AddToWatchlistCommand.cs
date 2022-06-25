@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace MovieWatchlist.Commands
 {
@@ -14,7 +15,8 @@ namespace MovieWatchlist.Commands
         private readonly AddToWatchlistViewModel _addToWatchlistViewModel;
         private readonly Watchlist _watchlist;
         private readonly NavigationService _watchlistViewNavigation;
-        private string? _motionPictureType;
+        private static string? _imagePath;
+        private BitmapImage newImage = new BitmapImage();
 
         public AddToWatchlistCommand(AddToWatchlistViewModel addToWatchlistViewModel, 
             Watchlist watchlist, NavigationService watchlistViewNavigation)
@@ -24,31 +26,42 @@ namespace MovieWatchlist.Commands
             _watchlistViewNavigation = watchlistViewNavigation;
         }
 
-        public void SetMotionPictureType(string? mpType)
+        public static void SetMotionPictureImage(string? path)
         {
-            _motionPictureType = mpType;
+            _imagePath = path;
         }
 
         public override void Execute(object? parameter)
         {
-            if (_motionPictureType == "Movie")
+            if(_imagePath != null)
+            {
+                newImage.BeginInit();
+                newImage.CacheOption = BitmapCacheOption.OnLoad;
+                newImage.UriSource = new Uri(_imagePath, UriKind.RelativeOrAbsolute);
+                newImage.EndInit();
+                newImage.Freeze();
+            }
+            
+            if (_addToWatchlistViewModel.Type == "Movie")
             {
                 Movie movie = new Movie(
                            _addToWatchlistViewModel.Name,
                            _addToWatchlistViewModel.ReleaseYear,
                            _addToWatchlistViewModel.Director,
-                           _addToWatchlistViewModel.Rating);
+                           _addToWatchlistViewModel.Rating,
+                           newImage);
 
                 _watchlist.AddMovie(movie);
             }
-            else if (_motionPictureType == "TV Series") 
+            else if (_addToWatchlistViewModel.Type == "TV Series") 
             {
                 TVSeries tvSeries = new TVSeries(
                             _addToWatchlistViewModel.Name,
                             _addToWatchlistViewModel.ReleaseYear,
                             _addToWatchlistViewModel.Director,
                             _addToWatchlistViewModel.Rating,
-                            _addToWatchlistViewModel.EpisodeCount);
+                            _addToWatchlistViewModel.EpisodeCount,
+                            newImage);
 
                 _watchlist.AddTVSeries(tvSeries);
             }
