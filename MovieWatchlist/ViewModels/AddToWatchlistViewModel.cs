@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -84,17 +85,39 @@ namespace MovieWatchlist.ViewModels
             }
         }
 
-        public ListBoxItem SelectedItem
+        private Visibility _isVisible;
+        public Visibility IsVisible
         {
+            get => _isVisible;
             set
             {
-                ((AddToWatchlistCommand)ConfirmCommand).SetMotionPictureType(value.Content.ToString());
-                OnPropertyChanged(nameof(SelectedItem));
+                _isVisible = value;
+                OnPropertyChanged(nameof(IsVisible));
             }
         }
 
         public ICommand ConfirmCommand { get; }
         public ICommand CancelCommand { get; }
+
+        public ListBoxItem SelectedItem
+        {
+            set
+            {
+                if(value != null)
+                {
+                    ((AddToWatchlistCommand)ConfirmCommand).SetMotionPictureType(value.Content.ToString());
+                    if (value.Content.ToString() == "Movie")
+                    {
+                        IsVisible = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        IsVisible = Visibility.Visible;
+                    }
+                    OnPropertyChanged(nameof(SelectedItem));
+                }
+            }
+        }
 
         public AddToWatchlistViewModel(Watchlist watchlist, NavigationService watchlistViewNavigation)
         {
