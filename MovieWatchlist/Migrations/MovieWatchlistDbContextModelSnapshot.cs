@@ -43,7 +43,7 @@ namespace MovieWatchlist.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MyProperty");
+                    b.ToTable("MotionPictureWatchlist");
                 });
 #pragma warning restore 612, 618
         }

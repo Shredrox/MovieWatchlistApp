@@ -59,7 +59,7 @@ namespace MovieWatchlist.Commands
                            _addToWatchlistViewModel.Name,
                            int.Parse(_addToWatchlistViewModel.ReleaseYear),
                            _addToWatchlistViewModel.Director,
-                           _addToWatchlistViewModel.Rating,
+                           _addToWatchlistViewModel.Rating + "/10",
                            "-",
                            newImage);
 
@@ -71,7 +71,7 @@ namespace MovieWatchlist.Commands
                             _addToWatchlistViewModel.Name,
                             int.Parse(_addToWatchlistViewModel.ReleaseYear),
                             _addToWatchlistViewModel.Director,
-                            _addToWatchlistViewModel.Rating,
+                            _addToWatchlistViewModel.Rating + "/10",
                             _addToWatchlistViewModel.EpisodeCount,
                             newImage);
 
@@ -83,6 +83,12 @@ namespace MovieWatchlist.Commands
 
         public BitmapImage CreateImage(string path)
         {
+            if (path.Contains("file://"))
+            {
+                string[] pathSplit = path.Split(new string[] { "///" }, StringSplitOptions.None);
+                path = pathSplit[1];
+            }
+
             BitmapImage bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();
             bitmapImage.CacheOption = BitmapCacheOption.OnLoad;

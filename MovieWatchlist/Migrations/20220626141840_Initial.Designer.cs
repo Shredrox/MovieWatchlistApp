@@ -11,7 +11,7 @@ using MovieWatchlist.DbContexts;
 namespace MovieWatchlist.Migrations
 {
     [DbContext(typeof(MovieWatchlistDbContext))]
-    [Migration("20220626114525_Initial")]
+    [Migration("20220626141840_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,7 +45,7 @@ namespace MovieWatchlist.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MyProperty");
+                    b.ToTable("MotionPictureWatchlist");
                 });
 #pragma warning restore 612, 618
         }

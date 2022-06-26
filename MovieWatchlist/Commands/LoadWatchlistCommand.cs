@@ -19,9 +19,11 @@ namespace MovieWatchlist.Commands
             _watchlist = watchlist;
         }
 
-        public override Task ExecuteAsync(object? parameter)
+        public override async Task ExecuteAsync(object? parameter)
         {
-            throw new NotImplementedException();
+            IEnumerable<MotionPicture> motionPictures = await _watchlist.GetWatchlist();
+
+            _watchlistViewModel.UpdateWatchlist(motionPictures);
         }
     }
 }

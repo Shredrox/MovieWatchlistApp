@@ -33,7 +33,7 @@ namespace MovieWatchlist.Services.Creators
                     ImagePath = ((BitmapImage)motionPicture.Image).UriSource.ToString()
                 };
 
-                context.Watchlist.Add(motionPictureDTO);
+                context.MotionPictureWatchlist.Add(motionPictureDTO);
                 await context.SaveChangesAsync();
             }
         }

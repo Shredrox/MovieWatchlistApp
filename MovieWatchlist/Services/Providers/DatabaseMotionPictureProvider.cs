@@ -23,6 +23,12 @@ namespace MovieWatchlist.Services.Providers
 
         public BitmapImage CreateImage(string path)
         {
+            if (path.Contains("file://"))
+            {
+                string[] pathSplit = path.Split(new string[] { "///" }, StringSplitOptions.None);
+                path = pathSplit[1];
+            }
+
             BitmapImage bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();
             bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
@@ -37,16 +43,16 @@ namespace MovieWatchlist.Services.Providers
         {
             using (MovieWatchlistDbContext context = _dbContextFactory.CreateDbContext())
             {
-                IEnumerable<MotionPictureDTO> motionPictureDTOs = await context.Watchlist.ToListAsync();
+                IEnumerable<MotionPictureDTO> motionPictureDTOs = await context.MotionPictureWatchlist.ToListAsync();
 
                 //mapping dto to motion picture
                 return motionPictureDTOs.Select(m => new MotionPicture(
                     m.Title,
                     m.ReleaseYear,
                     m.Director,
-                    int.Parse(m.Rating),
+                    m.Rating,
                     m.EpisodeCount,
-                    CreateImage(m.ImagePath));
+                    CreateImage(m.ImagePath)));
             }
         }
     }

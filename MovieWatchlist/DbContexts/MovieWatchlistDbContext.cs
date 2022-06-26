@@ -16,6 +16,6 @@ namespace MovieWatchlist.DbContexts
            
         }
 
-        public DbSet<MotionPictureDTO> Watchlist { get; set; }
+        public DbSet<MotionPictureDTO> MotionPictureWatchlist { get; set; }
     }
 }

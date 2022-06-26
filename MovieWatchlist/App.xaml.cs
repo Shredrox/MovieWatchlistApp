@@ -21,7 +21,7 @@ namespace MovieWatchlist
     /// </summary>
     public partial class App : Application
     {
-        private const string ConnectionString = "Data Source=movieWatchlist.db";
+        private const string ConnectionString = "Data Source=MovieWatchlist.db";
         private readonly Watchlist _watchlist;
         private readonly NavigationStore _navigationStore;
         private readonly MovieWatchlistDbContextFactory _dbContextFactory;
@@ -30,7 +30,8 @@ namespace MovieWatchlist
         {
             _dbContextFactory = new MovieWatchlistDbContextFactory(ConnectionString);
             IMotionPictureCreator motionPictureCreator = new DatabaseMotionPictureCreator(_dbContextFactory);
-            _watchlist = new Watchlist("MyWatchlist", motionPictureCreator);
+            IMotionPictureProvider motionPictureProvider = new DatabaseMotionPictureProvider(_dbContextFactory);
+            _watchlist = new Watchlist("MyWatchlist", motionPictureCreator, motionPictureProvider);
             _navigationStore = new NavigationStore();
         }
 
@@ -60,7 +61,7 @@ namespace MovieWatchlist
 
         private WatchlistViewModel CreateWatchlistViewModel()
         {
-            return new WatchlistViewModel(_watchlist, 
+            return WatchlistViewModel.LoadViewModel(_watchlist, 
                 new NavigationService(_navigationStore, CreateAddToWatchlistViewModel));
         }
     }

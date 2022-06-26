@@ -73,8 +73,8 @@ namespace MovieWatchlist.ViewModels
             }
         }
 
-        private int _rating;
-        public int Rating
+        private string? _rating;
+        public string? Rating
         {
             get
             {

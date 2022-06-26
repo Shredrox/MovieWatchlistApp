@@ -17,13 +17,13 @@ namespace MovieWatchlist.Models
         public string? EpisodeCount { get; }
         public ImageSource Image { get; }
 
-        public MotionPicture(string? title, int year, string? director, int rating,
+        public MotionPicture(string? title, int year, string? director, string? rating,
             string? episodeCount, BitmapImage image)
         {
             Title = title;
             ReleaseYear = year;
             Director = director;
-            Rating = Convert.ToString(rating) + "/10";
+            Rating = rating;
             EpisodeCount = episodeCount;
             Image = image;
         }
