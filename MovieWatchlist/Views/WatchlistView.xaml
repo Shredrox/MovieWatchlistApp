@@ -76,7 +76,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Release Year" Width="110">
+                    <GridViewColumn Header="Release Year" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding ReleaseYear}" HorizontalAlignment="Center" Foreground="White"/>
@@ -92,7 +92,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Episodes" Width="110">
+                    <GridViewColumn Header="Episodes" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding EpisodeCount}" HorizontalAlignment="Center" Foreground="White"/>
@@ -100,7 +100,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Rating" Width="60">
+                    <GridViewColumn Header="Rating" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Rating}" HorizontalAlignment="Center" Foreground="White"/>

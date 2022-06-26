@@ -73,12 +73,13 @@
             <TextBox 
                 x:Name="NameBox" 
                 Grid.Row="1"  
-                Margin="0 0 0 10"
+                Margin="0 0 0 15"
                 Foreground="White" 
                 CaretBrush="#FFFFCC00" 
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
                 BorderBrush="#FFFFCC00"
+                MaxLength="20"
                 Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
             
             <TextBlock 
@@ -90,12 +91,13 @@
             <TextBox 
                 x:Name="ReleaseYearBox" 
                 Grid.Row="3" 
-                Margin="0 0 0 10"
+                Margin="0 0 0 15"
                 Foreground="White" 
                 CaretBrush="#FFFFCC00" 
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
                 BorderBrush="#FFFFCC00"
+                MaxLength="4"
                 Text="{Binding ReleaseYear, UpdateSourceTrigger=PropertyChanged}"/>
             
             <TextBlock 
@@ -107,16 +109,17 @@
             <TextBox 
                 x:Name="DirectorBox" 
                 Grid.Row="5" 
-                Margin="0 0 0 10" 
+                Margin="0 0 0 15" 
                 Foreground="White" 
                 CaretBrush="#FFFFCC00" 
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
                 BorderBrush="#FFFFCC00"
+                MaxLength="25"
                 Text="{Binding Director, UpdateSourceTrigger=PropertyChanged}"/>
 
             <TextBlock 
-                Text="Rating" 
+                Text="Rating (out of 10)" 
                 Grid.Row="6" 
                 FontSize="15"
                 Foreground="White"/>
@@ -124,12 +127,13 @@
             <TextBox 
                 x:Name="RatingBox" 
                 Grid.Row="7" 
-                Margin="0 0 0 10" 
+                Margin="0 0 0 15" 
                 Foreground="White" 
                 CaretBrush="#FFFFCC00" 
                 SelectionBrush="#FFFFCC00" 
                 SelectionTextBrush="#FFFFCC00" 
                 BorderBrush="#FFFFCC00"
+                MaxLength="2"
                 Text="{Binding Rating, UpdateSourceTrigger=PropertyChanged}"/>
 
             <TextBlock 
@@ -142,7 +146,7 @@
             <TextBox 
                 x:Name="EpisodesBox" 
                 Grid.Row="9" 
-                Margin="0 0 0 10" 
+                Margin="0 0 0 15" 
                 Foreground="White" 
                 CaretBrush="#FFFFCC00" 
                 SelectionBrush="#FFFFCC00" 

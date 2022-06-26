@@ -3,7 +3,9 @@ using MovieWatchlist.Models;
 using MovieWatchlist.Services;
 using MovieWatchlist.Stores;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +16,7 @@ using System.Windows.Media;
 
 namespace MovieWatchlist.ViewModels
 {
-    public class AddToWatchlistViewModel : ViewModelBase
+    public class AddToWatchlistViewModel : ViewModelBase, INotifyDataErrorInfo
     {
         private string? _name;
         public string? Name
@@ -30,8 +32,8 @@ namespace MovieWatchlist.ViewModels
             }
         }
 
-        private int _releaseYear;
-        public int ReleaseYear
+        private string? _releaseYear;
+        public string? ReleaseYear
         {
             get
             {
@@ -41,6 +43,19 @@ namespace MovieWatchlist.ViewModels
             {
                 _releaseYear = value;
                 OnPropertyChanged(nameof(ReleaseYear));
+
+                _propetyNameToErrors.Remove(nameof(ReleaseYear));
+
+                if(!int.TryParse(ReleaseYear, out _))
+                {
+                    List<string> releaseYearErrors = new List<string>()
+                    {
+                        "Please enter a valid number for the release year."
+                    };
+
+                    _propetyNameToErrors.Add(nameof(ReleaseYear), releaseYearErrors);
+                    ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(ReleaseYear)));
+                }
             }
         }
 
@@ -83,6 +98,19 @@ namespace MovieWatchlist.ViewModels
             {
                 _episodeCount = value;
                 OnPropertyChanged(nameof(EpisodeCount));
+
+                _propetyNameToErrors.Remove(nameof(EpisodeCount));
+
+                if (!int.TryParse(EpisodeCount, out _))
+                {
+                    List<string> episodeCountErrors = new List<string>()
+                    {
+                        "Please enter a valid number for the episode count."
+                    };
+
+                    _propetyNameToErrors.Add(nameof(EpisodeCount), episodeCountErrors);
+                    ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(EpisodeCount)));
+                }
             }
         }
 
@@ -91,6 +119,7 @@ namespace MovieWatchlist.ViewModels
         public ICommand AddImageCommand { get; }
 
         private Visibility _isVisible;
+
         public Visibility IsVisible
         {
             get => _isVisible;
@@ -123,11 +152,23 @@ namespace MovieWatchlist.ViewModels
             }
         }
 
+        private Dictionary<string, List<string>> _propetyNameToErrors;
+
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
+        public bool HasErrors => _propetyNameToErrors.Any();
+
         public AddToWatchlistViewModel(Watchlist watchlist, NavigationService watchlistViewNavigation)
         {
             ConfirmCommand = new AddToWatchlistCommand(this, watchlist, watchlistViewNavigation);
             CancelCommand = new NavigationCommand(watchlistViewNavigation);
             AddImageCommand = new AddImageCommand();
+
+            _propetyNameToErrors = new Dictionary<string, List<string>>();
+        }
+
+        public IEnumerable GetErrors(string? propertyName)
+        {
+            return _propetyNameToErrors.GetValueOrDefault(propertyName, new List<string>());
         }
     }
 }

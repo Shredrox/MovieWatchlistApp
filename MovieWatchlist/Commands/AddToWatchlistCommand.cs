@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace MovieWatchlist.Commands
@@ -33,6 +34,19 @@ namespace MovieWatchlist.Commands
 
         public override void Execute(object? parameter)
         {
+            //if (_addToWatchlistViewModel.Name == null || _addToWatchlistViewModel.Name == String.Empty 
+            //    || _addToWatchlistViewModel.ReleaseYear == 0 || _addToWatchlistViewModel.Director == null 
+            //    || _addToWatchlistViewModel.Director == String.Empty)
+            //{
+            //    MessageBox.Show("Info missing");
+            //    return;
+            //}
+            //else if(_addToWatchlistViewModel.Type == null)
+            //{
+            //    MessageBox.Show("Please select item type.");
+            //    return;
+            //}
+
             if(_imagePath != null)
             {
                 newImage.BeginInit();
@@ -46,7 +60,7 @@ namespace MovieWatchlist.Commands
             {
                 Movie movie = new Movie(
                            _addToWatchlistViewModel.Name,
-                           _addToWatchlistViewModel.ReleaseYear,
+                           int.Parse(_addToWatchlistViewModel.ReleaseYear),
                            _addToWatchlistViewModel.Director,
                            _addToWatchlistViewModel.Rating,
                            newImage);
@@ -57,7 +71,7 @@ namespace MovieWatchlist.Commands
             {
                 TVSeries tvSeries = new TVSeries(
                             _addToWatchlistViewModel.Name,
-                            _addToWatchlistViewModel.ReleaseYear,
+                            int.Parse(_addToWatchlistViewModel.ReleaseYear),
                             _addToWatchlistViewModel.Director,
                             _addToWatchlistViewModel.Rating,
                             _addToWatchlistViewModel.EpisodeCount,
