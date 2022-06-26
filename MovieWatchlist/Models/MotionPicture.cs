@@ -18,7 +18,7 @@ namespace MovieWatchlist.Models
         public ImageSource Image { get; }
 
         public MotionPicture(string? title, int year, string? director, int rating,
-            string episodeCount, BitmapImage image)
+            string? episodeCount, BitmapImage image)
         {
             Title = title;
             ReleaseYear = year;

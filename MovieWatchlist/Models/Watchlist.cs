@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MovieWatchlist.Services.Creators;
+using MovieWatchlist.Services.Providers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,27 +10,19 @@ namespace MovieWatchlist.Models
 {
     public class Watchlist
     {
-        private List<MotionPicture> _watchList;
-
-        public List<MotionPicture> WatchList 
-        { 
-            get 
-            { 
-                return _watchList; 
-            } 
-        }
+        private readonly IMotionPictureCreator _motionPictureCreator;
 
         public string? Name { get; }
-        
-        public Watchlist(string name)
+
+        public Watchlist(string name, IMotionPictureCreator motionPictureCreator)
         {
             Name = name;
-            _watchList = new List<MotionPicture>();
+            _motionPictureCreator = motionPictureCreator;
         }
 
-        public void AddMotionPicture(MotionPicture motionPicture)
+        public async Task AddMotionPicture(MotionPicture motionPicture)
         {
-            _watchList.Add(motionPicture);
+            await _motionPictureCreator.CreateMotionPicture(motionPicture);
         }
     }
 }

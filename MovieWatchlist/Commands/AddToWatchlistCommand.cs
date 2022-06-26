@@ -1,5 +1,6 @@
 ﻿using MovieWatchlist.Models;
 using MovieWatchlist.Services;
+using MovieWatchlist.Services.Creators;
 using MovieWatchlist.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Windows.Media.Imaging;
 
 namespace MovieWatchlist.Commands
 {
-    public class AddToWatchlistCommand : CommandBase
+    public class AddToWatchlistCommand : AsyncCommandBase, IBitmapImageCreator
     {
         private readonly AddToWatchlistViewModel _addToWatchlistViewModel;
         private readonly Watchlist _watchlist;
@@ -32,7 +33,7 @@ namespace MovieWatchlist.Commands
             _imagePath = path;
         }
 
-        public override void Execute(object? parameter)
+        public override async Task ExecuteAsync(object? parameter)
         {
             //if (_addToWatchlistViewModel.Name == null || _addToWatchlistViewModel.Name == String.Empty 
             //    || _addToWatchlistViewModel.ReleaseYear == 0 || _addToWatchlistViewModel.Director == null 
@@ -49,11 +50,7 @@ namespace MovieWatchlist.Commands
 
             if(_imagePath != null)
             {
-                newImage.BeginInit();
-                newImage.CacheOption = BitmapCacheOption.OnLoad;
-                newImage.UriSource = new Uri(_imagePath, UriKind.RelativeOrAbsolute);
-                newImage.EndInit();
-                newImage.Freeze();
+                newImage = CreateImage(_imagePath);
             }
             
             if (_addToWatchlistViewModel.Type == "Movie")
@@ -66,7 +63,7 @@ namespace MovieWatchlist.Commands
                            "-",
                            newImage);
 
-                _watchlist.AddMotionPicture(movie);
+                await _watchlist.AddMotionPicture(movie);
             }
             else if (_addToWatchlistViewModel.Type == "TV Series") 
             {
@@ -78,10 +75,22 @@ namespace MovieWatchlist.Commands
                             _addToWatchlistViewModel.EpisodeCount,
                             newImage);
 
-                _watchlist.AddMotionPicture(tvSeries);
+                await _watchlist.AddMotionPicture(tvSeries);
             }
 
             _watchlistViewNavigation.Navigate();
+        }
+
+        public BitmapImage CreateImage(string path)
+        {
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+            bitmapImage.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
+            bitmapImage.EndInit();
+            bitmapImage.Freeze();
+
+            return bitmapImage;
         }
     }
 }

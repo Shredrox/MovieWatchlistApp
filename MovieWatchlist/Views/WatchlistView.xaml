@@ -39,7 +39,7 @@
             Margin="5 0 0 20"
             HorizontalAlignment="Center"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-            Command="{Binding EditPlaylistCommand}">
+            Command="{Binding EditWatchlistCommand}">
         </Button>
 
         <ListView 

@@ -2,6 +2,8 @@
 using MovieWatchlist.DbContexts;
 using MovieWatchlist.Models;
 using MovieWatchlist.Services;
+using MovieWatchlist.Services.Creators;
+using MovieWatchlist.Services.Providers;
 using MovieWatchlist.Stores;
 using MovieWatchlist.ViewModels;
 using System;
@@ -22,17 +24,19 @@ namespace MovieWatchlist
         private const string ConnectionString = "Data Source=movieWatchlist.db";
         private readonly Watchlist _watchlist;
         private readonly NavigationStore _navigationStore;
+        private readonly MovieWatchlistDbContextFactory _dbContextFactory;
 
         public App()
         {
-            _watchlist = new Watchlist("MyWatchlist");
+            _dbContextFactory = new MovieWatchlistDbContextFactory(ConnectionString);
+            IMotionPictureCreator motionPictureCreator = new DatabaseMotionPictureCreator(_dbContextFactory);
+            _watchlist = new Watchlist("MyWatchlist", motionPictureCreator);
             _navigationStore = new NavigationStore();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            DbContextOptions? options = new DbContextOptionsBuilder().UseSqlite(ConnectionString).Options;
-            using (MovieWatchlistDbContext dbContext = new MovieWatchlistDbContext(options))
+            using (MovieWatchlistDbContext dbContext = _dbContextFactory.CreateDbContext())
             {
                 dbContext.Database.Migrate();
             }

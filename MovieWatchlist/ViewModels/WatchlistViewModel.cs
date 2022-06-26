@@ -17,27 +17,37 @@ namespace MovieWatchlist.ViewModels
 
         public IEnumerable<MotionPictureViewModel> WatchList => _watchlistCollection;
 
-        public ICommand EditPlaylistCommand { get; }
+        public ICommand EditWatchlistCommand { get; }
+        public ICommand LoadWatchlistCommand { get; }
 
         public WatchlistViewModel(Watchlist watchlist, NavigationService addToWatchlistNavigation)
         {
             _watchlistCollection = new ObservableCollection<MotionPictureViewModel>();
             _watchlist = watchlist;
 
-            EditPlaylistCommand = new NavigationCommand(addToWatchlistNavigation);
+            EditWatchlistCommand = new NavigationCommand(addToWatchlistNavigation);
+            LoadWatchlistCommand = new LoadWatchlistCommand(this, _watchlist);
 
             UpdateWatchlist();
+        }
+
+        public static WatchlistViewModel LoadViewModel(Watchlist watchlist, NavigationService addToWatchlistNavigation)
+        {
+            WatchlistViewModel viewModel = new WatchlistViewModel(watchlist, addToWatchlistNavigation);
+            viewModel.LoadWatchlistCommand.Execute(null);
+
+            return viewModel;
         }
 
         private void UpdateWatchlist()
         {
             _watchlistCollection.Clear();
 
-            foreach(MotionPicture motionPicture in _watchlist.WatchList)
-            {
-                MotionPictureViewModel motionPictureViewModel = new MotionPictureViewModel(motionPicture);
-                _watchlistCollection.Add(motionPictureViewModel);
-            }
+            //foreach(MotionPicture motionPicture in _watchlist.WatchList)
+            //{
+            //    MotionPictureViewModel motionPictureViewModel = new MotionPictureViewModel(motionPicture);
+            //    _watchlistCollection.Add(motionPictureViewModel);
+            //}
         }
     }
 }
