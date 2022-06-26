@@ -1,4 +1,6 @@
-﻿using MovieWatchlist.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MovieWatchlist.DbContexts;
+using MovieWatchlist.Models;
 using MovieWatchlist.Services;
 using MovieWatchlist.Stores;
 using MovieWatchlist.ViewModels;
@@ -17,6 +19,7 @@ namespace MovieWatchlist
     /// </summary>
     public partial class App : Application
     {
+        private const string ConnectionString = "Data Source=movieWatchlist.db";
         private readonly Watchlist _watchlist;
         private readonly NavigationStore _navigationStore;
 
@@ -28,6 +31,12 @@ namespace MovieWatchlist
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            DbContextOptions? options = new DbContextOptionsBuilder().UseSqlite(ConnectionString).Options;
+            using (MovieWatchlistDbContext dbContext = new MovieWatchlistDbContext(options))
+            {
+                dbContext.Database.Migrate();
+            }
+
             _navigationStore.CurrentViewModel = CreateWatchlistViewModel();
 
             MainWindow = new MainWindow()

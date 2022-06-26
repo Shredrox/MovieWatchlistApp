@@ -156,6 +156,10 @@ namespace MovieWatchlist.ViewModels
 
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
         public bool HasErrors => _propetyNameToErrors.Any();
+        public IEnumerable GetErrors(string? propertyName)
+        {
+            return _propetyNameToErrors.GetValueOrDefault(propertyName, new List<string>());
+        }
 
         public AddToWatchlistViewModel(Watchlist watchlist, NavigationService watchlistViewNavigation)
         {
@@ -164,11 +168,6 @@ namespace MovieWatchlist.ViewModels
             AddImageCommand = new AddImageCommand();
 
             _propetyNameToErrors = new Dictionary<string, List<string>>();
-        }
-
-        public IEnumerable GetErrors(string? propertyName)
-        {
-            return _propetyNameToErrors.GetValueOrDefault(propertyName, new List<string>());
         }
     }
 }

@@ -28,10 +28,10 @@ namespace MovieWatchlist.ViewModels
 
             UpdateWatchlist();
 
-            //_watchlistCollection.Add(new MotionPictureViewModel(new Movie("aaaaa", 2022, "bbbb", 69,
-            //    new BitmapImage(new Uri(@"C:\Users\User\Desktop\Stuff\topGunMaverick.jpg")))));
-            //_watchlistCollection.Add(new MotionPictureViewModel(new Movie("aaaaa", 2022, "bbbb", 69,
-            //    new BitmapImage(new Uri(@"C:\Users\User\Desktop\Stuff\topGunMaverick.jpg")))));
+            _watchlistCollection.Add(new MotionPictureViewModel(new Movie("aaaaa", 2022, "bbbb", 69,
+                new BitmapImage(new Uri(@"C:\Users\User\Desktop\Stuff\topGunMaverick.jpg")))));
+            _watchlistCollection.Add(new MotionPictureViewModel(new Movie("aaaaa", 2022, "bbbb", 69,
+                new BitmapImage(new Uri(@"C:\Users\User\Desktop\Stuff\topGunMaverick.jpg")))));
         }
 
         private void UpdateWatchlist()

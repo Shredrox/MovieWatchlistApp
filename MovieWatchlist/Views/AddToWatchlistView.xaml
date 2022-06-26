@@ -160,7 +160,7 @@
         <Button 
             Grid.Row="3"
             Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}"
-            Width="100"
+            Width="110"
             Command="{Binding AddImageCommand}"
             Content="Add Image"/>
 
