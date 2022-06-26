@@ -26,14 +26,9 @@ namespace MovieWatchlist.Models
             _watchList = new List<MotionPicture>();
         }
 
-        public void AddMovie(Movie movie)
+        public void AddMotionPicture(MotionPicture motionPicture)
         {
-            _watchList.Add(movie);
-        }
-
-        public void AddTVSeries(TVSeries tvSeries)
-        {
-            _watchList.Add(tvSeries);
+            _watchList.Add(motionPicture);
         }
     }
 }

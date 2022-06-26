@@ -58,18 +58,19 @@ namespace MovieWatchlist.Commands
             
             if (_addToWatchlistViewModel.Type == "Movie")
             {
-                Movie movie = new Movie(
+                MotionPicture movie = new MotionPicture(
                            _addToWatchlistViewModel.Name,
                            int.Parse(_addToWatchlistViewModel.ReleaseYear),
                            _addToWatchlistViewModel.Director,
                            _addToWatchlistViewModel.Rating,
+                           "-",
                            newImage);
 
-                _watchlist.AddMovie(movie);
+                _watchlist.AddMotionPicture(movie);
             }
             else if (_addToWatchlistViewModel.Type == "TV Series") 
             {
-                TVSeries tvSeries = new TVSeries(
+                MotionPicture tvSeries = new MotionPicture(
                             _addToWatchlistViewModel.Name,
                             int.Parse(_addToWatchlistViewModel.ReleaseYear),
                             _addToWatchlistViewModel.Director,
@@ -77,7 +78,7 @@ namespace MovieWatchlist.Commands
                             _addToWatchlistViewModel.EpisodeCount,
                             newImage);
 
-                _watchlist.AddTVSeries(tvSeries);
+                _watchlist.AddMotionPicture(tvSeries);
             }
 
             _watchlistViewNavigation.Navigate();
