@@ -11,7 +11,7 @@ using MovieWatchlist.DbContexts;
 namespace MovieWatchlist.Migrations
 {
     [DbContext(typeof(MovieWatchlistDbContext))]
-    [Migration("20220626141840_Initial")]
+    [Migration("20220626165442_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,9 @@ namespace MovieWatchlist.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("WatchedEpisodes")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

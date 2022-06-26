@@ -30,6 +30,7 @@ namespace MovieWatchlist.Services.Creators
                     Director = motionPicture.Director,
                     Rating = motionPicture.Rating,
                     EpisodeCount = motionPicture.EpisodeCount,
+                    WatchedEpisodes = motionPicture.WatchedEpisodes,
                     ImagePath = ((BitmapImage)motionPicture.Image).UriSource.ToString()
                 };
 

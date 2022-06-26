@@ -17,6 +17,7 @@ namespace MovieWatchlist.ViewModels
         public string? Director => _motionPicture.Director;
         public string? Rating => _motionPicture.Rating;
         public string? EpisodeCount => _motionPicture.EpisodeCount;
+        public string? WatchedEpisodes => _motionPicture.WatchedEpisodes;
         public ImageSource Image => _motionPicture.Image;
 
         public MotionPictureViewModel(MotionPicture motionPicture)

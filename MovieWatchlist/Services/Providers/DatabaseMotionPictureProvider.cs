@@ -51,6 +51,7 @@ namespace MovieWatchlist.Services.Providers
                     m.ReleaseYear,
                     m.Director,
                     m.Rating,
+                    m.WatchedEpisodes,
                     m.EpisodeCount,
                     CreateImage(m.ImagePath)));
             }

@@ -61,6 +61,7 @@ namespace MovieWatchlist.Commands
                            _addToWatchlistViewModel.Director,
                            _addToWatchlistViewModel.Rating + "/10",
                            "-",
+                           "-",
                            newImage);
 
                 await _watchlist.AddMotionPicture(movie);
@@ -72,6 +73,7 @@ namespace MovieWatchlist.Commands
                             int.Parse(_addToWatchlistViewModel.ReleaseYear),
                             _addToWatchlistViewModel.Director,
                             _addToWatchlistViewModel.Rating + "/10",
+                            _addToWatchlistViewModel.WatchedEpisodes,
                             _addToWatchlistViewModel.EpisodeCount,
                             newImage);
 

@@ -62,6 +62,8 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             
             <TextBlock 
@@ -154,6 +156,25 @@
                 BorderBrush="#FFFFCC00"
                 Visibility="{Binding IsVisible, Mode=TwoWay}"
                 Text="{Binding EpisodeCount, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock 
+                Text="Watched Episodes" 
+                Grid.Row="10" 
+                FontSize="15"
+                Foreground="White"
+                Visibility="{Binding IsVisible, Mode=TwoWay}"/>
+
+            <TextBox 
+                x:Name="WatchedEpisodesBox" 
+                Grid.Row="11" 
+                Margin="0 0 0 15" 
+                Foreground="White" 
+                CaretBrush="#FFFFCC00" 
+                SelectionBrush="#FFFFCC00" 
+                SelectionTextBrush="#FFFFCC00" 
+                BorderBrush="#FFFFCC00"
+                Visibility="{Binding IsVisible, Mode=TwoWay}"
+                Text="{Binding WatchedEpisodes, UpdateSourceTrigger=PropertyChanged}"/>
 
         </Grid>
 

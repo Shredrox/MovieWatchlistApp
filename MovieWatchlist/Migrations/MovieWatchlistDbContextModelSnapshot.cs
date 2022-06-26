@@ -41,6 +41,9 @@ namespace MovieWatchlist.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("WatchedEpisodes")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("MotionPictureWatchlist");

@@ -17,6 +17,7 @@ namespace MovieWatchlist.DTOs
         public string? Director { get; set; }
         public string? Rating { get; set; }
         public string? ImagePath { get; set; }
+        public string? WatchedEpisodes { get; set; }    
         public string? EpisodeCount { get; set; }
     }
 }

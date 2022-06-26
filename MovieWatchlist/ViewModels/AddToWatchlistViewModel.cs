@@ -114,6 +114,33 @@ namespace MovieWatchlist.ViewModels
             }
         }
 
+        private string? _watchedEpisodes;
+        public string? WatchedEpisodes
+        {
+            get
+            {
+                return _watchedEpisodes;
+            }
+            set
+            {
+                _watchedEpisodes = value;
+                OnPropertyChanged(nameof(WatchedEpisodes));
+
+                _propetyNameToErrors.Remove(nameof(WatchedEpisodes));
+
+                if (!int.TryParse(WatchedEpisodes, out _))
+                {
+                    List<string> watchedEpisodeCountErrors = new List<string>()
+                    {
+                        "Please enter a valid number for the episode count."
+                    };
+
+                    _propetyNameToErrors.Add(nameof(WatchedEpisodes), watchedEpisodeCountErrors);
+                    ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(WatchedEpisodes)));
+                }
+            }
+        }
+
         public ICommand ConfirmCommand { get; }
         public ICommand CancelCommand { get; }
         public ICommand AddImageCommand { get; }

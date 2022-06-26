@@ -19,6 +19,7 @@ namespace MovieWatchlist.Migrations
                     Director = table.Column<string>(type: "TEXT", nullable: true),
                     Rating = table.Column<string>(type: "TEXT", nullable: true),
                     ImagePath = table.Column<string>(type: "TEXT", nullable: true),
+                    WatchedEpisodes = table.Column<string>(type: "TEXT", nullable: true),
                     EpisodeCount = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
