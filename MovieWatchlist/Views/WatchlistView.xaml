@@ -60,6 +60,12 @@
                         <Trigger Property="IsKeyboardFocusWithin" Value="True">
                             <Setter Property="IsSelected" Value="True" />
                         </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#67B7D1" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#67B7D1" />
+                        </Trigger>
                     </Style.Triggers>
                 </Style>
             </ListView.ItemContainerStyle>

@@ -27,6 +27,11 @@ namespace MovieWatchlist.Models
             await _motionPictureCreator.CreateMotionPicture(motionPicture);
         }
 
+        public async Task UpdateMotionPicture(MotionPicture motionPicture)
+        {
+            await _motionPictureCreator.UpdateMotionPicture(motionPicture);
+        }
+
         private async Task<IEnumerable<MotionPicture>> GetWatchlistItems()
         {
             return await _motionPictureProvider.GetWatchlist();

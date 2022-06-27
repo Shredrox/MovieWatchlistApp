@@ -10,18 +10,21 @@ using System.Windows.Media.Imaging;
 
 namespace MovieWatchlist.Commands
 {
-    public class AddWatchedEpisodeCommand : CommandBase
+    public class AddWatchedEpisodeCommand : AsyncCommandBase
     {
         private readonly WatchlistViewModel _watchlistViewModel;
         private ObservableCollection<MotionPictureViewModel> _watchlistCollection;
+        private readonly Watchlist _watchlist;
 
-        public AddWatchedEpisodeCommand(WatchlistViewModel watchlistViewModel, ObservableCollection<MotionPictureViewModel> watchlistCollection)
+        public AddWatchedEpisodeCommand(WatchlistViewModel watchlistViewModel, 
+            ObservableCollection<MotionPictureViewModel> watchlistCollection, Watchlist watchlist)
         {
             _watchlistViewModel = watchlistViewModel;
             _watchlistCollection = watchlistCollection;
+            _watchlist = watchlist;
         }
 
-        public override void Execute(object? parameter)
+        public override async Task ExecuteAsync(object? parameter)
         {
             int index = _watchlistCollection.IndexOf(_watchlistViewModel.SelectedMotionPcture);
             int watchedEpisodeCount = int.Parse(_watchlistViewModel.SelectedMotionPcture.WatchedEpisodes);
@@ -35,6 +38,8 @@ namespace MovieWatchlist.Commands
                 Convert.ToString(watchedEpisodeCount),
                 _watchlistCollection.ElementAt(index).EpisodeCount,
                 (BitmapImage)_watchlistCollection.ElementAt(index).Image);
+
+            await _watchlist.UpdateMotionPicture(motionPicture);
 
             MotionPictureViewModel motionPictureViewModel = new MotionPictureViewModel(motionPicture);
             _watchlistCollection.RemoveAt(index);

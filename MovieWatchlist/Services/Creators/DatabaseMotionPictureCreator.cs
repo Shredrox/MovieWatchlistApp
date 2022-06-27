@@ -38,5 +38,17 @@ namespace MovieWatchlist.Services.Creators
                 await context.SaveChangesAsync();
             }
         }
+
+        public async Task UpdateMotionPicture(MotionPicture motionPicture)
+        {
+            using (MovieWatchlistDbContext context = _dbContextFactory.CreateDbContext())
+            {
+                context.MotionPictureWatchlist
+                    .SingleOrDefault(m => m.Title == motionPicture.Title)
+                    .WatchedEpisodes = motionPicture.WatchedEpisodes;
+
+                await context.SaveChangesAsync();
+            }
+        }
     }
 }
