@@ -43,18 +43,24 @@
         </Button>
 
         <ListView 
-            x:Name="WatchlistBox" 
+            x:Name="WatchlistViewList" 
             Grid.Row="2" 
             HorizontalAlignment="Center"
-            ItemsSource="{Binding WatchList}">
+            ItemsSource="{Binding WatchList}"
+            SelectedItem="{Binding SelectedMotionPcture}">
 
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <!--<Setter Property="HorizontalContentAlignment" Value="Center"/>
                     <Setter Property="HorizontalAlignment" Value="Center"/>
                     <Setter Property="Height" Value="30"/>-->
-
                     <Setter Property="FontSize" Value="15"/>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter Property="IsSelected" Value="True" />
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
             </ListView.ItemContainerStyle>
 
@@ -115,7 +121,9 @@
                                         Width="25" 
                                         Height="25" 
                                         Padding="0"
-                                        Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}">
+                                        Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}"
+                                        Command="{Binding DataContext.AddWatchedEpisodeCommand, ElementName=WatchlistViewList}"
+                                        CommandParameter="{Binding DataContext, ElementName=WatchlistViewList}">
                                         
                                         <materialDesign:PackIcon Kind="MoviePlusOutline" Foreground="Black" Width="15" Height="15" />
                                     </Button>

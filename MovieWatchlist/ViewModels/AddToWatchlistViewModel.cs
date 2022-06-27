@@ -145,6 +145,7 @@ namespace MovieWatchlist.ViewModels
         public ICommand CancelCommand { get; }
         public ICommand AddImageCommand { get; }
 
+
         private Visibility _isVisible;
 
         public Visibility IsVisible

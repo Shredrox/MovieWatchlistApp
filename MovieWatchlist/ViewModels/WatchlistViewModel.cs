@@ -12,9 +12,35 @@ namespace MovieWatchlist.ViewModels
 {
     public class WatchlistViewModel : ViewModelBase
     {
-        private readonly ObservableCollection<MotionPictureViewModel> _watchlistCollection;
+        private ObservableCollection<MotionPictureViewModel> _watchlistCollection;
 
-        public IEnumerable<MotionPictureViewModel> WatchList => _watchlistCollection;
+        public ObservableCollection<MotionPictureViewModel> WatchList
+        {
+            get
+            {
+                return _watchlistCollection;
+            }
+            set
+            {
+                _watchlistCollection = value;
+                OnPropertyChanged(nameof(WatchList));
+            }
+        }
+
+        private MotionPictureViewModel? _selectedMotionPicture;
+        public MotionPictureViewModel? SelectedMotionPcture 
+        {
+            get
+            {
+                return _selectedMotionPicture;
+            }
+            set
+            {
+                _selectedMotionPicture = value;
+                OnPropertyChanged(nameof(SelectedMotionPcture));
+                
+            }
+        }
 
         public ICommand EditWatchlistCommand { get; }
         public ICommand LoadWatchlistCommand { get; }
@@ -26,7 +52,7 @@ namespace MovieWatchlist.ViewModels
 
             EditWatchlistCommand = new NavigationCommand(addToWatchlistNavigation);
             LoadWatchlistCommand = new LoadWatchlistCommand(this, watchlist);
-            AddWatchedEpisodeCommand = new AddWatchedEpisodeCommand(this);
+            AddWatchedEpisodeCommand = new AddWatchedEpisodeCommand(this, _watchlistCollection);
         }
 
         public static WatchlistViewModel LoadViewModel(Watchlist watchlist, NavigationService addToWatchlistNavigation)
