@@ -8,9 +8,9 @@
         xmlns:views="clr-namespace:MovieWatchlist.Views"
         xmlns:vms="clr-namespace:MovieWatchlist.ViewModels"
         mc:Ignorable="d"
-        Title="Movie Watchlist" Height="800" Width="700"
+        Title="Movie Watchlist" Height="840" Width="900"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="CanMinimize"  WindowStyle="None">
     
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -19,27 +19,70 @@
         </LinearGradientBrush>
     </Window.Background>
 
-    <materialDesign:Card Margin="30" UniformCornerRadius="20">
-        <materialDesign:Card.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF9C7DB7"/>
-                <GradientStop Color="#FFC5A9A9" Offset="1"/>
-            </LinearGradientBrush>
-        </materialDesign:Card.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <materialDesign:Card 
+            Grid.Row="0" 
+            Height="40"
+            Background="#FF213379">
+
             <Grid>
-                <Grid.Resources>
-                    <DataTemplate DataType="{x:Type vms:WatchlistViewModel}">
-                        <views:WatchlistView/>
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type vms:AddToWatchlistViewModel}">
-                        <views:AddToWatchlistView/>
-                    </DataTemplate>
-                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="450"/>
+                    <ColumnDefinition Width="450"/>
+                </Grid.ColumnDefinitions>
 
-                <ContentControl Content="{Binding CurrentViewModel}"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <Button 
+                        Content="_"  
+                        Command="{Binding MinimizeCommand}"
+                        Width="35"
+                        Height="25"
+                        Padding="0"
+                        Margin="360 0 10 0"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}"/>
+
+                    <Button 
+                        Content="X"  
+                        Command="{Binding CloseCommand}"
+                        Width="35"
+                        Height="25"
+                        Padding="0"
+                        Margin="0 0 10 0"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}"/>
+
+                </StackPanel>
             </Grid>
-        </ScrollViewer>
-    </materialDesign:Card>
+        </materialDesign:Card>
+        
+        <materialDesign:Card Margin="30" Height="740" Grid.Row="1" UniformCornerRadius="20">
+            <materialDesign:Card.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF9C7DB7"/>
+                    <GradientStop Color="#FFC5A9A9" Offset="1"/>
+                </LinearGradientBrush>
+            </materialDesign:Card.Background>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.Resources>
+                        <DataTemplate DataType="{x:Type vms:WatchlistViewModel}">
+                            <views:WatchlistView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vms:AddToWatchlistViewModel}">
+                            <views:AddToWatchlistView/>
+                        </DataTemplate>
+                    </Grid.Resources>
+
+                    <ContentControl Content="{Binding CurrentViewModel}"/>
+                </Grid>
+            </ScrollViewer>
+        </materialDesign:Card>
+    </Grid>
 </Window>

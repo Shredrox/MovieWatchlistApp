@@ -51,9 +51,6 @@
 
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <!--<Setter Property="HorizontalContentAlignment" Value="Center"/>
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                    <Setter Property="Height" Value="30"/>-->
                     <Setter Property="FontSize" Value="15"/>
 
                     <Style.Triggers>
@@ -80,7 +77,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Name" >
+                    <GridViewColumn Header="Name"  Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Title}" Margin="5" HorizontalAlignment="Center" Foreground="White"/>
@@ -88,7 +85,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Release Year" >
+                    <GridViewColumn Header="Release Year" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding ReleaseYear}" HorizontalAlignment="Center" Foreground="White"/>
@@ -96,7 +93,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Director">
+                    <GridViewColumn Header="Director" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Director}" HorizontalAlignment="Center" Foreground="White"/>
@@ -104,7 +101,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Episodes" >
+                    <GridViewColumn Header="Episodes" Width="120" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding EpisodeCount}" HorizontalAlignment="Center" Foreground="White"/>
@@ -112,7 +109,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Watched">
+                    <GridViewColumn Header="Watched" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" >
@@ -121,7 +118,7 @@
                                         HorizontalAlignment="Center" 
                                         VerticalAlignment="Center"
                                         Foreground="White"/>
-                                    
+
                                     <Button 
                                         Margin="10 0 0 0"
                                         Width="25" 
@@ -130,7 +127,7 @@
                                         Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}"
                                         Command="{Binding DataContext.AddWatchedEpisodeCommand, ElementName=WatchlistViewList}"
                                         CommandParameter="{Binding DataContext, ElementName=WatchlistViewList}">
-                                        
+
                                         <materialDesign:PackIcon Kind="MoviePlusOutline" Foreground="Black" Width="15" Height="15" />
                                     </Button>
                                 </StackPanel>

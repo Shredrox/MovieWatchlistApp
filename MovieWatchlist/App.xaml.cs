@@ -40,7 +40,7 @@ namespace MovieWatchlist
 
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(_watchlist, _navigationStore)
+                DataContext = new MainViewModel(_navigationStore)
             };
             MainWindow.Show();
 
