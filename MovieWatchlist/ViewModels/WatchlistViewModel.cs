@@ -18,6 +18,7 @@ namespace MovieWatchlist.ViewModels
 
         public ICommand EditWatchlistCommand { get; }
         public ICommand LoadWatchlistCommand { get; }
+        public ICommand AddWatchedEpisodeCommand { get; }
 
         public WatchlistViewModel(Watchlist watchlist, NavigationService addToWatchlistNavigation)
         {
@@ -25,6 +26,7 @@ namespace MovieWatchlist.ViewModels
 
             EditWatchlistCommand = new NavigationCommand(addToWatchlistNavigation);
             LoadWatchlistCommand = new LoadWatchlistCommand(this, watchlist);
+            AddWatchedEpisodeCommand = new AddWatchedEpisodeCommand(this);
         }
 
         public static WatchlistViewModel LoadViewModel(Watchlist watchlist, NavigationService addToWatchlistNavigation)

@@ -100,10 +100,26 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Watched Episodes" >
+                    <GridViewColumn Header="Watched">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding WatchedEpisodes}" HorizontalAlignment="Center" Foreground="White"/>
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock 
+                                        Text="{Binding WatchedEpisodes}" 
+                                        HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"
+                                        Foreground="White"/>
+                                    
+                                    <Button 
+                                        Margin="10 0 0 0"
+                                        Width="25" 
+                                        Height="25" 
+                                        Padding="0"
+                                        Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}">
+                                        
+                                        <materialDesign:PackIcon Kind="MoviePlusOutline" Foreground="Black" Width="15" Height="15" />
+                                    </Button>
+                                </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
