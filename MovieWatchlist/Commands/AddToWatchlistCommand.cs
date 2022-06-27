@@ -3,11 +3,7 @@ using MovieWatchlist.Services;
 using MovieWatchlist.Services.Creators;
 using MovieWatchlist.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace MovieWatchlist.Commands
