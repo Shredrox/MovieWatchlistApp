@@ -185,10 +185,10 @@ namespace MovieWatchlist.ViewModels
             return _propetyNameToErrors.GetValueOrDefault(propertyName, new List<string>());
         }
 
-        public AddToWatchlistViewModel(Watchlist watchlist, NavigationService watchlistViewNavigation)
+        public AddToWatchlistViewModel(Watchlist watchlist, NavigationService<WatchlistViewModel> watchlistViewNavigation)
         {
             ConfirmCommand = new AddToWatchlistCommand(this, watchlist, watchlistViewNavigation);
-            CancelCommand = new NavigationCommand(watchlistViewNavigation);
+            CancelCommand = new NavigationCommand<WatchlistViewModel>(watchlistViewNavigation);
             AddImageCommand = new AddImageCommand();
 
             _propetyNameToErrors = new Dictionary<string, List<string>>();

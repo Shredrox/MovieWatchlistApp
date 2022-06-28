@@ -13,12 +13,12 @@ namespace MovieWatchlist.Commands
     {
         private readonly AddToWatchlistViewModel _addToWatchlistViewModel;
         private readonly Watchlist _watchlist;
-        private readonly NavigationService _watchlistViewNavigation;
+        private readonly NavigationService<WatchlistViewModel> _watchlistViewNavigation;
         private static string? _imagePath;
         private BitmapImage newImage = new BitmapImage();
 
         public AddToWatchlistCommand(AddToWatchlistViewModel addToWatchlistViewModel, 
-            Watchlist watchlist, NavigationService watchlistViewNavigation)
+            Watchlist watchlist, NavigationService<WatchlistViewModel> watchlistViewNavigation)
         {
             _addToWatchlistViewModel = addToWatchlistViewModel;
             _watchlist = watchlist;

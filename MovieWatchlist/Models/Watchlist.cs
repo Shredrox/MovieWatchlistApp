@@ -10,11 +10,8 @@ namespace MovieWatchlist.Models
         private readonly IMotionPictureCreator _motionPictureCreator;
         private readonly IMotionPictureProvider _motionPictureProvider;
 
-        public string? Name { get; }
-
-        public Watchlist(string name, IMotionPictureCreator motionPictureCreator, IMotionPictureProvider motionPictureProvider)
+        public Watchlist(IMotionPictureCreator motionPictureCreator, IMotionPictureProvider motionPictureProvider)
         {
-            Name = name;
             _motionPictureCreator = motionPictureCreator;
             _motionPictureProvider = motionPictureProvider;
         }

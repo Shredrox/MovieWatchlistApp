@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace MovieWatchlist.ViewModels
 {
-    public class WatchlistViewModel : ViewModelBase
+    public class WatchlistViewModel: ViewModelBase 
     {
         private ObservableCollection<MotionPictureViewModel> _watchlistCollection;
 
@@ -43,16 +43,16 @@ namespace MovieWatchlist.ViewModels
         public ICommand LoadWatchlistCommand { get; }
         public ICommand AddWatchedEpisodeCommand { get; }
 
-        public WatchlistViewModel(Watchlist watchlist, NavigationService addToWatchlistNavigation)
+        public WatchlistViewModel(Watchlist watchlist, NavigationService<AddToWatchlistViewModel> addToWatchlistNavigation)
         {
             _watchlistCollection = new ObservableCollection<MotionPictureViewModel>();
 
-            EditWatchlistCommand = new NavigationCommand(addToWatchlistNavigation);
+            EditWatchlistCommand = new NavigationCommand<AddToWatchlistViewModel>(addToWatchlistNavigation);
             LoadWatchlistCommand = new LoadWatchlistCommand(this, watchlist);
             AddWatchedEpisodeCommand = new AddWatchedEpisodeCommand(this, watchlist);
         }
 
-        public static WatchlistViewModel LoadViewModel(Watchlist watchlist, NavigationService addToWatchlistNavigation)
+        public static WatchlistViewModel LoadViewModel(Watchlist watchlist, NavigationService<AddToWatchlistViewModel> addToWatchlistNavigation)
         {
             WatchlistViewModel viewModel = new WatchlistViewModel(watchlist, addToWatchlistNavigation);
             viewModel.LoadWatchlistCommand.Execute(null);
