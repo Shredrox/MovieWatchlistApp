@@ -69,20 +69,18 @@
                 </LinearGradientBrush>
             </materialDesign:Card.Background>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <Grid>
-                    <Grid.Resources>
-                        <DataTemplate DataType="{x:Type vms:WatchlistViewModel}">
-                            <views:WatchlistView/>
-                        </DataTemplate>
-                        <DataTemplate DataType="{x:Type vms:AddToWatchlistViewModel}">
-                            <views:AddToWatchlistView/>
-                        </DataTemplate>
-                    </Grid.Resources>
+            <Grid>
+                <Grid.Resources>
+                    <DataTemplate DataType="{x:Type vms:WatchlistViewModel}">
+                        <views:WatchlistView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vms:AddToWatchlistViewModel}">
+                        <views:AddToWatchlistView/>
+                    </DataTemplate>
+                </Grid.Resources>
 
-                    <ContentControl Content="{Binding CurrentViewModel}"/>
-                </Grid>
-            </ScrollViewer>
+                <ContentControl Content="{Binding CurrentViewModel}"/>
+            </Grid>
         </materialDesign:Card>
     </Grid>
 </Window>

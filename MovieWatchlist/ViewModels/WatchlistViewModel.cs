@@ -49,7 +49,7 @@ namespace MovieWatchlist.ViewModels
 
             EditWatchlistCommand = new NavigationCommand(addToWatchlistNavigation);
             LoadWatchlistCommand = new LoadWatchlistCommand(this, watchlist);
-            AddWatchedEpisodeCommand = new AddWatchedEpisodeCommand(this, _watchlistCollection, watchlist);
+            AddWatchedEpisodeCommand = new AddWatchedEpisodeCommand(this, watchlist);
         }
 
         public static WatchlistViewModel LoadViewModel(Watchlist watchlist, NavigationService addToWatchlistNavigation)
