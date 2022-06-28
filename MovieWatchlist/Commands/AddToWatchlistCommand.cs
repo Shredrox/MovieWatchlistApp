@@ -4,6 +4,7 @@ using MovieWatchlist.Services.Creators;
 using MovieWatchlist.ViewModels;
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace MovieWatchlist.Commands
@@ -31,20 +32,20 @@ namespace MovieWatchlist.Commands
 
         public override async Task ExecuteAsync(object? parameter)
         {
-            //if (_addToWatchlistViewModel.Name == null || _addToWatchlistViewModel.Name == String.Empty 
-            //    || _addToWatchlistViewModel.ReleaseYear == 0 || _addToWatchlistViewModel.Director == null 
-            //    || _addToWatchlistViewModel.Director == String.Empty)
-            //{
-            //    MessageBox.Show("Info missing");
-            //    return;
-            //}
-            //else if(_addToWatchlistViewModel.Type == null)
-            //{
-            //    MessageBox.Show("Please select item type.");
-            //    return;
-            //}
+            if (_addToWatchlistViewModel.Name == null || _addToWatchlistViewModel.Name == String.Empty
+                || int.Parse(_addToWatchlistViewModel.ReleaseYear) == 0 || _addToWatchlistViewModel.Director == null
+                || _addToWatchlistViewModel.Director == String.Empty)
+            {
+                MessageBox.Show("Info missing");
+                return;
+            }
+            else if (_addToWatchlistViewModel.Type == null)
+            {
+                MessageBox.Show("Please select item type.");
+                return;
+            }
 
-            if(_imagePath != null)
+            if (_imagePath != null)
             {
                 newImage = CreateImage(_imagePath);
             }

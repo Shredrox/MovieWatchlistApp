@@ -43,6 +43,5 @@ namespace MovieWatchlist.ViewModels
         {
             OnPropertyChanged(nameof(CurrentViewModel));
         }
-
     }
 }

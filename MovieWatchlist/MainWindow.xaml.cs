@@ -29,5 +29,10 @@ namespace MovieWatchlist
                 };
             }
         }
+
+        private void Card_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }

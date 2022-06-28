@@ -28,13 +28,23 @@
         <materialDesign:Card 
             Grid.Row="0" 
             Height="40"
-            Background="#FF213379">
+            Background="#FF213379"
+            MouseDown="Card_MouseDown">
 
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="450"/>
                     <ColumnDefinition Width="450"/>
                 </Grid.ColumnDefinitions>
+
+                <TextBlock 
+                    Text="Movie Watchlist"
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    FontSize="25"
+                    Margin="10"/>
 
                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                     <Button 
